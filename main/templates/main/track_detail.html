@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+
+
+{% block page_title %}
+
+{% for artist in track.artists.all %}
+	{{artist.name}}{% if not forloop.last %},  {% endif %}
+{% endfor %}
+
+- {{track.name}}
+
+
+{% endblock %}
+
+
+
+{% block content %}
+
+<div class="col-md-8">
+
+<div class="track_detail_page">
+	<div class="title">
+		<h3>
+		{% for artist in track.artists.all %}
+			{{artist.name}}{% if not forloop.last %}, {% endif %}
+		{% endfor %} - 
+		{{track.name}}	
+		</h3>
+	</div>
+
+	<div class="bblock p-3">
+		<small class="text-light mb-2 d-block">
+			На музыкальном портале mp3.ru Вы можете и скачать в mp3 формате песню
+			{% for artist in track.artists.all %}
+				{{artist.name}}
+				{% if not forloop.last %}
+				, 
+				{% endif %}
+			{% endfor %}
+			- {{track.name}}
+			бесплатно и без регистрации
+		</small>
+		<table>
+			<tr>
+				<td>
+					<b class="text-light">Исполнитель</b> 
+				</td>
+				<td class="pl-2">
+					{% for artist in track.artists.all %}
+						<a href="{{artist.get_absolute_url}}" class="text-light">
+							{{artist.name}}
+						</a>{% if not forloop.last %}<i class="text-light">, </i>{% endif %}
+					{% endfor %}
+				</td>
+			</tr>
+			{% load mathfilters %}
+			<tr>
+				<td>
+					<b class="text-light">Длительность</b> 
+				</td>
+				<td class="pl-2">
+					<i class="text-light">
+						{{ formatted_length }}
+					</i>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<b class="text-light">Размер</b> 
+				</td>
+				<td class="pl-2">
+					<i class="text-light">
+						{{track.audio.size|intdiv:1024|intdiv:1024}}.{{track.audio.size|intdiv:1024|mod:1024|intdiv:100}} MB
+					</i>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<b class="text-light">Кол-во прослушиваний</b>
+				</td>
+				<td class="pl-2">
+					<i class="text-light">{{track.views}}</i>
+				</td>
+			</tr>
+			<tr>
+				<td class="pt-3">
+					<a href="#" class="btn btn-danger">
+						Слушать <i class="fa fa-play"></i>
+					</a>
+				</td>
+				<td class="pl-2 pt-3">
+					<a href="{{track.audio.url}}" download="{{track.get_name_for_download}}" class="btn btn-primary">
+						Скачать <i class="fa fa-download"></i>
+					</a>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" class="pt-3">
+					<a href="/" class="text-light">
+						&laquo; &nbsp; &nbsp;Домой
+					</a>
+				</td>
+			</tr>
+		</table>
+	</div>
+
+</div>
+
+
+</div>
+
+
+
+
+{% include 'includes/right_block.html' %}
+
+
+
+
+{% endblock %}

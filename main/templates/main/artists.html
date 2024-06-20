@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% block page_title %}
+	
+Исполнители
+
+{% endblock %}
+
+
+
+{% block active_artists %}
+active
+{% endblock %}
+
+
+
+
+
+{% block content %}
+<div class="col-md-8">
+	<div class="title">
+		<h3>Исполнители</h3>
+	</div>
+	<div class="artists_list">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-6">
+					{% for artist in left_artists %}
+					<div class="artist_block"> 
+						<table>
+							<tr>
+								<td class="artist_img_td">
+									<img src="{{ artist.image.url }}" alt="{{artist.name}}">
+								</td>
+								<td class="artist_info_td">
+									<div class="pl-2">
+										<a href="{{artist.get_absolute_url}}">
+											<h6>{{artist.name}}</h6>
+										</a>
+										<!--<small><a href="#">Суротуно</a></small>-->
+									</div>
+								</td>
+							</tr>
+						</table>
+					</div>
+					{% endfor %}
+				</div>
+				<div class="col-md-6">
+					{% for artist in right_artists %}
+					<div class="artist_block"> 
+						<table>
+							<tr>
+								<td class="artist_img_td">
+									<img src="{{ artist.image.url }}" alt="{{artist.name}}">
+								</td>
+								<td class="artist_info_td">
+									<div class="pl-2">
+										<a href="/artist_page/{{artist.slug}}">
+											<h6>{{artist.name}}</h6>
+										</a>
+										<!--<small><a href="#">Эсимде</a></small>-->
+									</div>
+								</td>
+							</tr>
+						</table>
+					</div>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+{% include 'includes/right_block.html' %}
+
+{% endblock %}

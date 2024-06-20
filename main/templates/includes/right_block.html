@@ -1,0 +1,55 @@
+<div class="col-md-4">
+	<div class="main-menu">
+		<a href="/list/new">Новинки</a>
+		<a href="/list/popular">Популярные</a>
+		<a href="/list/foreign">Зарубежные</a>
+	</div>
+
+
+	<div class="top-artists">
+		<div class="title">
+			<h3>ТОП 5 исполнителей</h3>
+		</div>
+		{% for curent_top_artist in top_artists %}
+		<div class="artist-rank">
+			<table width="100%" class="">
+				<tr>
+					<td class="artist-rank-number text-center">
+						<b>{{forloop.counter}}</b>
+					</td>
+					<td class="artist-rank-img text-center">
+						<img src="{{ curent_top_artist.image.url}}" alt="{{curent_top_artist.name}}">
+					</td>
+					<td class="artist-rank-name">
+						<a href="/artist_page/{{curent_top_artist.slug}}" class="name-link"><h6>{{ curent_top_artist.name }}</h6></a>
+					</td>
+				</tr>
+			</table>
+		</div>
+		{% endfor %}
+	</div>
+
+
+
+	<!--
+
+	<div class="genres mt-3">
+		<div class="title">
+			<h3>Жанры</h3>
+		</div>
+		<div class="genres-block">
+			<a href="#">Поп</a>
+			<a href="#">Рок</a>
+			<a href="#">Рэп</a>
+			<a href="#">Альтернатива</a>
+			<a href="#">Электроника</a>
+			<a href="#">Шансон</a>
+			<a href="#">Саундтреки</a>
+			<a href="#">Остальные &raquo;</a>
+		</div>
+	</div>
+
+	-->
+
+</div>
+
