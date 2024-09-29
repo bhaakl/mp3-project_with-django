@@ -24,7 +24,7 @@
 - **библиотеки для обработки медиа-файлов**: mutagen (для аудио), pillow (для изображений).
 
 <div align="center">
-    ![scheme arhc django-project](https://github.com/user-attachments/assets/95de8925-2104-4ea4-a408-be4f9558e0a9)
+    <img src="https://github.com/user-attachments/assets/95de8925-2104-4ea4-a408-be4f9558e0a9" alt="scheme arhc django-project"/>
     <p><em>Схема архитектуры приложения</em></p>
 </div>
 
